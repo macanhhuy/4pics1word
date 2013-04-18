@@ -5,11 +5,12 @@ Usage:
 
 Example:
 
-convict@localhost:4pics1word$ python run.py wwhisidewtqq 5
-Letters: w, w, h, i, s, i, d, e, w, t, q, q
-Word length: 5
-There are 4,479 5 letter words.
-Narrowing results...
-There are 13 possible words:
+convict@localhost:4pics1word$ python run.py wwhisidewtqq 5   
+Letters: w, w, h, i, s, i, d, e, w, t, q, q   
+Word length: 5   
+There are 4,479 5 letter words.   
+Narrowing results...   
+There are 13 possible words:     
+    
+diets, edits, heist, hides, shied, shite, sited, tides, whets, whist, white, width, wised     
 
-diets, edits, heist, hides, shied, shite, sited, tides, whets, whist, white, width, wised
