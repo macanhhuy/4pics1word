@@ -57,16 +57,27 @@ def main(letters, length):
 	print 'Word length: %d' % (length)
 
 	wordList = getWords(['wordlist.txt'], length)
+	if len(wordList) == 0:
+		print 'Sorry, no matches. Try a different dictionary.'
+		sys.exit(-1)
+
 	print 'There are %s %d letter words.' % ("{:,d}".format(len(wordList)), length)
 
 	print 'Narrowing results...'
 	candidates = getCandidates(wordList, letters)		
+
+	if len(candidates) == 0:
+		print 'Sorry, no matches. Try a different dictionary.'
+		sys.exit(-1)
 
 	print 'There are %s possible words:\n' % len(candidates)
 
 	print ', '.join(candidates)
 
 if __name__ == '__main__':
+	if len(sys.argv) < 3:
+		print 'Usage: python run.py [letters] [word length]'
+		sys.exit(-1)
 	if not sys.argv[1].isalpha():
 		print 'Only letters allowed.'
 		sys.exit(-1)
