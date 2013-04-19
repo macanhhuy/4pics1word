@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-import sys
+import sys, os
 
 def getWords(files, length):
 	'''Returns a list of words equal in size to length: Args:
@@ -8,18 +8,30 @@ def getWords(files, length):
 	Returns:
 	- list: requested list of words'''
 
-	list = []
+	# load dictionaries
+	tempList = []
 	for file in files:
-		fh = open(file)
-		for line in fh:
-			list.append(line.strip())
-		fh.close()
+		try:
+			fh = open(file)
+			for line in fh:
+				tempList.append(line.strip())
+			fh.close()
+			print 'Loaded %s dictionary.' % (file)
+		except IOError:
+			print 'Could not open file %s' % file
+			pass
 
+	# remove duplicates
+	tempList = list(set(tempList))
+
+	# get words of x length
 	sizedList = []
-	for word in list:
+	for word in tempList:
 		if len(word) == length:
 			sizedList.append(word)
 
+	# sort list and return
+	sizedList.sort()
 	return sizedList
 
 def contains(word, letters):
@@ -56,7 +68,13 @@ def main(letters, length):
 	print 'Letters: %s' % (', '.join(letters))
 	print 'Word length: %d' % (length)
 
-	wordList = getWords(['wordlist.txt'], length)
+	files = os.listdir('.')
+	dictionaries = []
+	for i in files:
+		if i.startswith('dict'):
+			dictionaries.append(i)
+
+	wordList = getWords(dictionaries, length)
 	if len(wordList) == 0:
 		print 'Sorry, no matches. Try a different dictionary.'
 		sys.exit(-1)
