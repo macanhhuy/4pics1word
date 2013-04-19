@@ -14,6 +14,9 @@ There are 13 possible words:
     
 diets, edits, heist, hides, shied, shite, sited, tides, whets, whist, white, width, wised     
 
+### Tips:
+* To add more wordlists just add it in the current directory and name the file dict\[whatever\].txt
+
 ### Thanks to:
 dict1.txt from <http://wordlist.sourceforge.net/>   
 original dict2.txt from <http://invokeit.wordpress.com/frequency-word-lists/>    
